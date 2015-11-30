@@ -10,3 +10,13 @@ RUN apt-get update && apt-get install -y \
 
 #install meteor
 RUN curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh
+
+#set the app folder
+VOLUME /tmp/app
+WORKDIR /tmp/app
+
+#expose the port of meteor server
+EXPOSE 3000
+
+#launch metor build and server
+CMD ["meteor"]
